@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="agendaPageTitle">Turtle projects · BotWorkshop</title>
+    <link rel="stylesheet" href="css/agenda.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand-row">
+          <div>
+            <h1 data-i18n="agendaTitle">Turtle projects</h1>
+            <p data-i18n="agendaLead">
+              Pick a project, try the challenge, show it off! Change blocks in Coding → Upload to Turtle (unplug Bluetooth).
+            </p>
+          </div>
+          <label class="hub-lang">
+            <span class="visually-hidden" data-i18n="language">Language</span>
+            <select id="site-lang" class="site-lang" aria-label="Language">
+              <option value="en">English</option>
+              <option value="ar">العربية</option>
+            </select>
+          </label>
+        </div>
+      </header>
+
+      <p class="nav-links">
+        <a href="code.html" data-i18n="agendaBackCoding">← Coding</a>
+        ·
+        <a href="install/index.html">Install</a>
+      </p>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <p class="project-tag" data-i18n="fhP1Tag">Start here</p>
+          <h3 data-i18n="fhP1Title">Meet your turtle</h3>
+          <p data-i18n="fhP1Body">Wheels, eyes, lights — snap Coding blocks like Lego!</p>
+          <p class="project-challenge" data-i18n="fhP1Challenge">Try a sample and upload once.</p>
+          <p class="timeline-code">
+            <a href="code.html" data-i18n="agendaBackCoding">Coding</a>
+          </p>
+        </article>
+        <article class="project-card">
+          <p class="project-tag" data-i18n="fhP2Tag">Warm-up</p>
+          <h3 data-i18n="fhP2Title">8×8 face art</h3>
+          <p data-i18n="fhP2Body">Draw a smile, letter, or secret emoji on the light face.</p>
+          <p class="project-challenge" data-i18n="fhP2Challenge">Challenge: class guesses your drawing!</p>
+          <p class="timeline-code">
+            <a href="code.html?demo=face" data-i18n="fhP2Link">Draw face</a>
+          </p>
+        </article>
+        <article class="project-card">
+          <p class="project-tag" data-i18n="fhP3Tag">Show</p>
+          <h3 data-i18n="fhP3Title">Dance party</h3>
+          <p data-i18n="fhP3Body">Press IR remote buttons — each one starts a different dance. Remix the maps in Coding!</p>
+          <p class="project-challenge" data-i18n="fhP3Challenge">Vote: funniest or coolest dance!</p>
+          <p class="timeline-code">
+            <a href="code.html?demo=dance" data-i18n="fhP3Dance">Dance (IR)</a>
+            ·
+            <a href="code.html?demo=square" data-i18n="fhP3Square">Square</a>
+          </p>
+        </article>
+        <article class="project-card">
+          <p class="project-tag" data-i18n="fhP4Tag">Eyes</p>
+          <h3 data-i18n="fhP4Title">Ultrasonic scan &amp; move</h3>
+          <p data-i18n="fhP4Body">
+            Eyes look left/right when something is close, then the turtle moves. Motors wiring Normal = flee. Reverse = chase.
+          </p>
+          <p class="project-challenge" data-i18n="fhP4Challenge">Can it dodge walls — and chase a friend?</p>
+          <p class="project-game" data-i18n="fhP4Game">
+            Game — Cat &amp; mice: same program on every turtle. Cat uses Motors → Reverse direction (chase). Mice keep Normal (flee). If the cat catches a mouse, that mouse is out. Last mouse free wins!
+          </p>
+          <p class="timeline-code">
+            <a href="code.html?demo=scan" data-i18n="fhP4Link">Open scan &amp; move</a>
+          </p>
+        </article>
+        <article class="project-card">
+          <p class="project-tag" data-i18n="fhP7Tag">Track</p>
+          <h3 data-i18n="fhP7Title">Tape track</h3>
+          <p data-i18n="fhP7Body">Build a tape path — can the turtle stay on it?</p>
+          <p class="project-challenge" data-i18n="fhP7Challenge">Rally: finish the loop twice!</p>
+          <p class="timeline-code">
+            <a href="code.html?demo=line" data-i18n="fhP7Link">Line follow</a>
+          </p>
+        </article>
+      </div>
+    </div>
+    <script type="module">
+      import { applyAgendaI18n, getAgendaLang } from "./js/agenda-i18n.js";
+      import { setLang } from "./src/i18n.js";
+
+      document.getElementById("site-lang")?.addEventListener("change", (e) => {
+        setLang(e.target.value);
+        applyAgendaI18n(getAgendaLang());
+      });
+      applyAgendaI18n();
+    </script>
+  </body>
+</html>

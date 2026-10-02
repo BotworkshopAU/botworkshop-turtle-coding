@@ -1,0 +1,175 @@
+:root {
+  --ink: #12323a;
+  --muted: #4d6b72;
+  --paper: #f6fbf8;
+  --card: #ffffff;
+  --line: #d5e8e4;
+  --teal: #0f8a7a;
+  --teal-dark: #0b6b5e;
+  --shell: #e07a3d;
+  --shadow: 0 12px 30px rgba(18, 50, 58, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top right, #dff6ef 0, transparent 40%),
+    var(--paper);
+  line-height: 1.5;
+}
+
+.wrap {
+  width: min(1080px, calc(100% - 32px));
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+header {
+  padding: 18px 0 8px;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.brand-row h1 {
+  margin: 0;
+  font-size: 1.45rem;
+}
+
+.brand-row p {
+  margin: 2px 0 0;
+  color: var(--muted);
+}
+
+.hub-lang {
+  margin-inline-start: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.site-lang select {
+  font: inherit;
+  font-weight: 700;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--card);
+}
+
+.nav-links {
+  margin: 12px 0 20px;
+  font-size: 0.95rem;
+}
+
+.nav-links a {
+  color: var(--teal-dark);
+  font-weight: 700;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+}
+
+.project-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 18px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1;
+  padding: 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.project-tag {
+  margin: 0 0 8px;
+  color: var(--shell);
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.project-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+
+.project-card > p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.project-challenge {
+  margin-top: auto !important;
+  color: var(--teal-dark) !important;
+  font-weight: 700;
+  font-size: 0.9rem !important;
+}
+
+.project-game {
+  margin: 0 0 10px !important;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--teal) 12%, transparent);
+  font-size: 0.88rem !important;
+}
+
+.timeline-code {
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  font-size: 0.85rem;
+}
+
+.timeline-code a {
+  color: var(--teal-dark);
+  font-weight: 700;
+}
+
+@media (max-width: 800px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-card {
+    aspect-ratio: auto;
+    min-height: 200px;
+  }
+}

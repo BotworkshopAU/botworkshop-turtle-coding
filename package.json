@@ -1,0 +1,24 @@
+{
+  "name": "botworkshop-turtle-coding",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Local Turtle robot block coding only (BotWorkshop)",
+  "scripts": {
+    "dev": "node server/dev.mjs",
+    "dev:lan": "node server/dev.mjs --host",
+    "setup:cli": "node server/setup-cli.mjs",
+    "compile-api": "node server/compile.mjs",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "blockly": "^12.3.1",
+    "express": "^5.2.1",
+    "webserial-flasher": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "vite": "^7.1.7"
+  }
+}

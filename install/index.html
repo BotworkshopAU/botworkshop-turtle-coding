@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Install · Turtle coding</title>
+    <link rel="stylesheet" href="../css/agenda.css" />
+    <style>
+      .install-body {
+        max-width: 52rem;
+      }
+      .install-body h2 {
+        margin-top: 1.6rem;
+        font-size: 1.15rem;
+      }
+      .install-body h3 {
+        margin-top: 1rem;
+        font-size: 1rem;
+        color: var(--teal-dark);
+      }
+      .install-body pre,
+      .install-body code {
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 0.9rem;
+      }
+      .install-body pre {
+        background: #0f2a30;
+        color: #e8f5f2;
+        padding: 12px 14px;
+        border-radius: 12px;
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10px 0;
+        font-size: 0.95rem;
+      }
+      th,
+      td {
+        border: 1px solid var(--line);
+        padding: 8px 10px;
+        text-align: start;
+      }
+      th {
+        background: #e7f7f3;
+      }
+      .note {
+        background: #fff8e8;
+        border: 1px solid #f1dd9d;
+        border-radius: 12px;
+        padding: 12px 14px;
+        margin: 14px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap install-body">
+      <header>
+        <div class="brand-row">
+          <div>
+            <h1>Install guide</h1>
+            <p>Turtle coding — local laptop setup (Node, Arduino CLI, CP210x USB-UART)</p>
+          </div>
+        </div>
+      </header>
+      <p class="nav-links">
+        <a href="../code.html">← Coding</a>
+        ·
+        <a href="../agenda.html">Agenda</a>
+        ·
+        <a href="README.md">Markdown copy</a>
+      </p>
+
+      <article class="card">
+        <p>
+          Students only need <strong>this project folder</strong>. Upload works in <strong>Chrome or Edge</strong> on the same PC as the USB cable.
+        </p>
+
+        <h2>1. Node.js and npm</h2>
+        <table>
+          <tr>
+            <th>Windows</th>
+            <td>
+              <a href="https://nodejs.org/">nodejs.org</a> LTS installer, or
+              <code>winget install OpenJS.NodeJS.LTS</code>
+            </td>
+          </tr>
+          <tr>
+            <th>Mac</th>
+            <td><a href="https://nodejs.org/">nodejs.org</a> LTS, or <code>brew install node</code></td>
+          </tr>
+        </table>
+        <pre>node --version
+npm --version</pre>
+
+        <h2>2. Once per laptop (in this folder)</h2>
+        <pre>npm install
+npm run setup:cli</pre>
+        <p>
+          Installs Arduino CLI (if on PATH), Uno core, <strong>Servo</strong>, and <strong>IRremote 2.6.1</strong>.
+        </p>
+        <table>
+          <tr>
+            <th>Windows — Arduino CLI</th>
+            <td>
+              <a href="https://arduino.github.io/arduino-cli/latest/installation/">Install guide</a> or
+              <code>winget install ArduinoSA.CLI</code>
+            </td>
+          </tr>
+          <tr>
+            <th>Mac — Arduino CLI</th>
+            <td><code>brew install arduino-cli</code></td>
+          </tr>
+        </table>
+
+        <h2>3. CP210x USB-UART driver (Silicon Labs)</h2>
+        <p>
+          The Turtle board uses a <strong>CP2102</strong> chip. Install the VCP driver once:
+          <a
+            href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads"
+            target="_blank"
+            rel="noreferrer"
+            >Silicon Labs CP210x drivers</a
+          >.
+        </p>
+
+        <h3>Windows — which port?</h3>
+        <ul>
+          <li>Device Manager → <strong>Ports (COM &amp; LPT)</strong></li>
+          <li>Look for <strong>Silicon Labs CP210x USB to UART Bridge (COMx)</strong></li>
+          <li>When you click <strong>Upload to Turtle</strong>, pick that CP210x entry in the browser dialog</li>
+        </ul>
+
+        <h3>Mac — which port?</h3>
+        <ul>
+          <li>After installing the driver, plug in USB</li>
+          <li>Typical device name: <code>/dev/cu.SLAB_USBtoUART</code> (check with <code>ls /dev/cu.SLAB*</code>)</li>
+          <li>Allow the driver in <strong>System Settings → Privacy &amp; Security</strong> if macOS prompts</li>
+          <li>Upload picker shows the SLAB / CP210x port — select it there</li>
+        </ul>
+
+        <div class="note">
+          <strong>Before every upload:</strong> unplug the Bluetooth module on the robot. TX/RX are shared with USB serial.
+        </div>
+
+        <h2>4. Every class session</h2>
+        <pre>npm run dev</pre>
+        <p>Open <strong>http://localhost:5173/code.html</strong> → snap blocks → <strong>Upload to Turtle</strong>.</p>
+
+        <h2>5. Troubleshooting</h2>
+        <ul>
+          <li><strong>No Upload button</strong> — use <code>npm run dev</code>, not opening HTML as a file.</li>
+          <li><strong>No ports listed</strong> — reinstall CP210x driver; try another USB cable or socket.</li>
+          <li><strong>Compile fails</strong> — run <code>npm run setup:cli</code> again with internet.</li>
+        </ul>
+      </article>
+    </div>
+  </body>
+</html>
