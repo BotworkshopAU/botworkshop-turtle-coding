@@ -15,10 +15,30 @@ Small package for class laptops: **Turtle robot block coding only** — no full 
 
 The **`offline/`** folder includes:
 
-- `npm/node_modules.zip` — site dependencies  
-- `arduino-ide/` — **Arduino IDE 1.8.19** (Uno/AVR included)  
-- `drivers/cp210x/` — USB-UART drivers  
-- `node/` — portable Node (Windows)
+| Path | What it is |
+|------|------------|
+| `offline/node/` | **Node.js** runtime (includes **npm**). Only needed if the laptop has no Node yet. |
+| `offline/npm/node_modules.zip` | **Project packages** for this site — not a second npm install. See below. |
+| `offline/arduino-ide/` | **Arduino IDE 1.8.19** (Uno/AVR included) |
+| `offline/drivers/cp210x/` | USB-UART drivers (Windows + Mac) |
+
+### Why `offline/npm/`? (packages, not the npm tool)
+
+A normal Node install already comes with **npm**. You do **not** install npm separately.
+
+`offline/npm/` is only a pre-downloaded copy of this project’s dependencies (what `npm install` would fetch from the internet). In class there is no network, so we ship them as `node_modules.zip` and extract them once.
+
+From `package.json` (ranges resolved when the zip was built):
+
+| Package | Role | Version range |
+|---------|------|----------------|
+| **blockly** | Block coding UI | `^12.3.1` |
+| **express** | Local compile API server | `^5.2.1` |
+| **webserial-flasher** | Browser USB upload helper (optional path) | `^1.0.1` |
+| **vite** | Dev server / build | `^7.1.7` |
+| **@types/express** | Type hints for Express | `^5.0.6` |
+
+Exact locked versions are in `package-lock.json` (also under `offline/npm/`).
 
 **Windows (once):**
 

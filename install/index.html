@@ -58,8 +58,17 @@
         </p>
         <table>
           <tr>
+            <th><code>offline/node/</code></th>
+            <td><strong>Node.js</strong> (includes <strong>npm</strong>) — only if Node is missing</td>
+          </tr>
+          <tr>
             <th><code>offline/npm/</code></th>
-            <td><code>node_modules.zip</code> — Blockly / Vite site packages</td>
+            <td>
+              Project <strong>packages</strong> (<code>node_modules.zip</code>), not a second npm.
+              Versions: Blockly <code>^12.3.1</code>, Express <code>^5.2.1</code>, Vite
+              <code>^7.1.7</code>, webserial-flasher <code>^1.0.1</code>, @types/express
+              <code>^5.0.6</code>
+            </td>
           </tr>
           <tr>
             <th><code>offline/arduino-ide/</code></th>
@@ -68,10 +77,6 @@
           <tr>
             <th><code>offline/drivers/cp210x/</code></th>
             <td>Silicon Labs USB-UART drivers (Windows + Mac)</td>
-          </tr>
-          <tr>
-            <th><code>offline/node/</code></th>
-            <td>Portable Node.js (Windows) if Node is missing</td>
           </tr>
         </table>
 

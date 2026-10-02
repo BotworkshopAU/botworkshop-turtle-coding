@@ -1,1 +1,22 @@
-Extract node_modules.zip into the project root (so node_modules sits next to package.json). Then npm run setup:cli and npm run dev.
+This folder is NOT a separate npm installer.
+
+Node.js already includes npm. Here we only store the PROJECT PACKAGES
+(what "npm install" would download) so class laptops work without internet.
+
+Contents:
+  node_modules.zip   — extract into the project root (next to package.json)
+  package-lock.json  — exact package versions used when the zip was built
+
+Packages (from package.json):
+  blockly              ^12.3.1   — block coding UI
+  express              ^5.2.1    — local server for npm run dev
+  webserial-flasher    ^1.0.1    — optional browser USB helper
+  vite                 ^7.1.7    — local web server / build
+  @types/express       ^5.0.6    — Express types (dev)
+
+Steps:
+  1. Install Node (includes npm) if needed — see offline/node/ on Windows
+  2. Extract node_modules.zip into the project root
+     or run: scripts/offline-setup.ps1 (Windows) / scripts/offline-setup.sh (Mac)
+  3. npm run dev
+  4. Coding: Download .ino → upload with Arduino IDE (offline/arduino-ide/)
