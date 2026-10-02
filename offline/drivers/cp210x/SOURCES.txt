@@ -1,0 +1,20 @@
+CP210x USB to UART Bridge VCP Drivers (offline pack)
+====================================================
+
+Official Silicon Labs page:
+  https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers
+
+Official document URLs attempted (returned HTTP 403 from this environment):
+  https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip
+  https://www.silabs.com/documents/public/software/Mac_OSX_VCP_Driver.zip
+
+What was obtained (mirrors):
+  Windows: CP210x_Universal_Windows_Driver.zip
+    Source: https://github.com/WPIRoboticsEngineering/ESP32ArduinoEclipseInstaller/releases/download/0.0.0/CP210x_Universal_Windows_Driver.zip
+    Notes: Redistributed Silicon Labs Universal Windows VCP driver package (contains silabser.inf / CP210xVCPInstaller_*.exe). Prefer re-downloading from the official SiLabs page when network access allows.
+
+  Mac: Mac_OSX_VCP_Driver.zip
+    Source: extracted from https://github.com/weifengdq/USB2SerialDriver (repo archive)
+    Notes: Community mirror of Mac OSX VCP driver zip. Prefer official SiLabs Mac_OSX_VCP_Driver.zip when available.
+
+Also considered: SourceForge myfocuserpro2-esp32 ESP32 Drivers pack (not needed after GitHub release succeeded).

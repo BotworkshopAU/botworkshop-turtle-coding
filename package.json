@@ -8,6 +8,7 @@
     "dev": "node server/dev.mjs",
     "dev:lan": "node server/dev.mjs --host",
     "setup:cli": "node server/setup-cli.mjs",
+    "offline:setup": "node -e \"console.log('Windows: powershell -ExecutionPolicy Bypass -File scripts/offline-setup.ps1\\nMac: bash scripts/offline-setup.sh')\"",
     "compile-api": "node server/compile.mjs",
     "build": "vite build",
     "preview": "vite preview"

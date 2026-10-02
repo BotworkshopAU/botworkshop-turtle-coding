@@ -206,8 +206,8 @@ function applyChrome() {
 
   const hub = document.querySelector(".brand.hub");
   const home = document.querySelector(".brand.home");
-  if (hub) hub.textContent = t.agenda;
-  if (home) home.textContent = t.installGuide;
+  if (hub) hub.textContent = t.home;
+  if (home) home.textContent = t.agenda;
 
   const demoLabel = document.querySelector('[data-i18n="demo"]');
   if (demoLabel) demoLabel.textContent = t.demo;

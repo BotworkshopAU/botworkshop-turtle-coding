@@ -1,0 +1,1 @@
+IDE installers are gitignored (over 100MB). They must stay on the USB copy of this folder. URLs in SOURCES.txt.

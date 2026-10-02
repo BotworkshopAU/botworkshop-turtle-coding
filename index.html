@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Turtle coding · BotWorkshop</title>
+    <link rel="stylesheet" href="css/agenda.css" />
+    <style>
+      .home-hero {
+        margin-top: 12px;
+      }
+      .home-hero h1 {
+        margin: 0 0 8px;
+        font-size: 2rem;
+      }
+      .home-hero p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 40rem;
+      }
+      .home-grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        margin-top: 22px;
+      }
+      .home-card {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        color: inherit;
+        padding: 22px 20px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        transition: border-color 0.15s, transform 0.15s;
+      }
+      .home-card:hover {
+        border-color: var(--teal);
+        transform: translateY(-2px);
+      }
+      .home-card .kicker {
+        margin: 0 0 8px;
+        color: var(--shell);
+        font-weight: 800;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .home-card h2 {
+        margin: 0 0 8px;
+        font-size: 1.35rem;
+        color: var(--teal-dark);
+      }
+      .home-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.45;
+      }
+      .home-note {
+        margin-top: 22px;
+        background: #fff8e8;
+        border: 1px solid #f1dd9d;
+        border-radius: 14px;
+        padding: 14px 16px;
+        font-size: 0.95rem;
+      }
+      .home-note code {
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand-row">
+          <div class="home-hero">
+            <h1>Turtle coding</h1>
+            <p>
+              Local class kit for the Turtle robot — blocks, upload over USB, and
+              the same project agenda used in Foundation.
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <div class="home-grid">
+        <a class="home-card" href="code.html">
+          <p class="kicker">Program</p>
+          <h2>Code</h2>
+          <p>Snap Blockly blocks and Upload to Turtle (Chrome/Edge + USB).</p>
+        </a>
+        <a class="home-card" href="agenda.html">
+          <p class="kicker">Projects</p>
+          <h2>Agenda</h2>
+          <p>
+            Turtle missions: face art, IR dance, ultrasonic scan &amp; move, line
+            track — same list as Foundation class hub.
+          </p>
+        </a>
+        <a class="home-card" href="install/index.html">
+          <p class="kicker">Setup</p>
+          <h2>Install guide</h2>
+          <p>
+            Node, Arduino IDE, CP210x USB-UART — offline copies under
+            <code>offline/</code> for classrooms without internet.
+          </p>
+        </a>
+      </div>
+
+      <div class="home-note">
+        <strong>Class session:</strong> from this folder run
+        <code>npm run dev</code>, then open
+        <code>http://localhost:5173/</code>. In Code use
+        <strong>Download .ino</strong>, then upload with Arduino IDE (Uno +
+        CP210x). Unplug Bluetooth first. Offline setup:
+        <a href="install/index.html">Install guide</a>.
+      </div>
+    </div>
+  </body>
+</html>

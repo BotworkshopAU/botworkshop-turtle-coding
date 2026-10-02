@@ -1,0 +1,1 @@
+Extract node_modules.zip into the project root (so node_modules sits next to package.json). Then npm run setup:cli and npm run dev.

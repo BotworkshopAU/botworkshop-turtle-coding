@@ -15,6 +15,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
+        main: resolve(__dirname, "index.html"),
         code: resolve(__dirname, "code.html"),
         agenda: resolve(__dirname, "agenda.html"),
         install: resolve(__dirname, "install/index.html"),

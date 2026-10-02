@@ -1,0 +1,27 @@
+Arduino IDE 1.8.19 offline installers
+=====================================
+
+Downloaded from downloads.arduino.cc (2026-10-02):
+
+- https://downloads.arduino.cc/arduino-1.8.19-windows.exe
+  → arduino-1.8.19-windows.exe
+
+- https://downloads.arduino.cc/arduino-1.8.19-windows.zip
+  → arduino-1.8.19-windows.zip
+
+- https://downloads.arduino.cc/arduino-1.8.19-macosx.zip
+  → arduino-1.8.19-macosx.zip
+
+Notes
+-----
+IDE 1.8.19 includes Arduino AVR (Uno) boards package for offline use — better
+than Arduino IDE 2.x for a no-internet classroom.
+
+Install once per laptop, then in Coding:
+  1. Download .ino from the coding page
+  2. Open the .ino in Arduino IDE
+  3. Tools → Board → Arduino Uno
+  4. Tools → Port → pick the CP210x COM port
+  5. Upload from Arduino IDE
+
+See also: https://www.arduino.cc/en/software (legacy IDE 1.8.x section)

@@ -14,7 +14,7 @@ const en = {
   agenda: "Agenda",
   installGuide: "Install",
   classHub: "Class hub",
-  home: "BotWorkshop",
+  home: "Home",
   robot: "Robot",
   robotTurtle: "Turtle robot",
   robotTello: "Tello drone",
@@ -97,13 +97,12 @@ const en = {
     <li>Use <strong>Chrome</strong> or Edge on a laptop (not a phone).</li>
     <li>
       Once per laptop: follow the <a href="install/index.html">Install guide</a>
-      (Node.js, Arduino CLI, CP210x USB-UART driver for Windows or Mac).
+      (extract <code>offline/npm</code>, install Arduino IDE 1.8.19 + CP210x driver).
     </li>
-    <li>Plug in the Turtle USB cable. <strong>Unplug Bluetooth</strong> on the robot.</li>
+    <li>Plug in USB. <strong>Unplug Bluetooth</strong> on the robot.</li>
     <li>
-      Run <code>npm run dev</code> and open
-      <code>http://localhost:5173/code.html</code>, then
-      <strong>Upload to Turtle</strong> and pick the CP210x serial port.
+      Run <code>npm run dev</code> → open Coding → <strong>Download .ino</strong>
+      → open in Arduino IDE (Board: Uno, Port: CP210x) → Upload.
     </li>
   `,
   telloStepsHtml: `
@@ -244,7 +243,7 @@ const ar = {
   agenda: "الجدول",
   installGuide: "التثبيت",
   classHub: "مركز الصف",
-  home: "BotWorkshop",
+  home: "الرئيسية",
   robot: "الروبوت",
   robotTurtle: "روبوت السلحفاة",
   robotTello: "طائرة تيلو",
@@ -327,13 +326,12 @@ const ar = {
     <li>استخدم <strong>Chrome</strong> أو Edge على حاسوب محمول (وليس هاتف).</li>
     <li>
       مرة لكل حاسوب: اتبع <a href="install/index.html">دليل التثبيت</a>
-      (Node.js و Arduino CLI وتعريف CP210x USB-UART لويندوز أو ماك).
+      (استخراج <code>offline/npm</code> وتثبيت Arduino IDE 1.8.19 وتعريف CP210x).
     </li>
-    <li>وصّل كابل USB للسلحفاة. <strong>افصل البلوتوث</strong> على الروبوت.</li>
+    <li>وصّل USB. <strong>افصل البلوتوث</strong> على الروبوت.</li>
     <li>
-      نفّذ <code>npm run dev</code> وافتح
-      <code>http://localhost:5173/code.html</code>، ثم
-      <strong>رفع إلى السلحفاة</strong> واختر منفذ CP210x.
+      نفّذ <code>npm run dev</code> → البرمجة → <strong>تنزيل .ino</strong>
+      → افتحه في Arduino IDE (اللوحة: Uno، المنفذ: CP210x) → رفع.
     </li>
   `,
   telloStepsHtml: `

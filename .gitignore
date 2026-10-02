@@ -7,3 +7,9 @@ desktop.ini
 node_modules/
 dist/
 .cache/
+tools/
+# Arduino IDE installers exceed GitHub 100MB limit — keep on USB / local offline/
+offline/arduino-ide/*.exe
+offline/arduino-ide/*.zip
+offline/arduino-ide/*.dmg
+offline/arduino-ide/*.msi
