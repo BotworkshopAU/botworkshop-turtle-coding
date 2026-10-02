@@ -11,62 +11,84 @@ Small package for class laptops: **Turtle robot block coding only** — no full 
 | Turtle agenda | http://localhost:5173/agenda.html |
 | Install guide | http://localhost:5173/install/index.html |
 
-## Offline classroom (no internet)
+## Student PCs without admin (school laptops)
 
-The **`offline/`** folder includes:
+Do **not** use the Node **Windows installer** — it needs admin and often fails with “unauthorized”.
+
+Use **portable Node** from this kit (no install, no admin):
+
+| Step | What to do |
+|------|------------|
+| 1 | Copy the whole `botworkshop-turtle-coding` folder onto the laptop (or USB). |
+| 2 | Once: run `powershell -ExecutionPolicy Bypass -File scripts\offline-setup.ps1` |
+| 3 | Every class: double‑click `scripts\start-dev.cmd` |
+| 4 | Browser: http://localhost:5173/ |
+
+That script:
+
+1. Extracts **portable Node** → `tools\node\node-…-win-x64\` (includes `node.exe` + `npm.cmd`)  
+2. Extracts **project packages** → `node_modules\` **in the project root** (same folder as `package.json`)
+
+```
+botworkshop-turtle-coding/
+  package.json
+  code.html
+  node_modules/                 ← project packages HERE
+  tools/
+    node/
+      node-v24.xx.x-win-x64/    ← portable Node HERE (not a system install)
+  offline/
+    node/node-…-win-x64.zip
+    npm/node_modules.zip
+```
+
+`start-dev.cmd` runs that portable `npm` — you never need `npm` on the system PATH.
+
+### Arduino + USB (may need teacher once)
+
+| Item | No-admin option |
+|------|-----------------|
+| **Arduino IDE** | Unzip `offline\arduino-ide\arduino-1.8.19-windows.zip` into the student’s Documents (portable). Avoid the `.exe` installer if it asks for admin. |
+| **CP210x driver** | Usually **needs admin once**. Ask IT/teacher to install from `offline\drivers\cp210x\`. Without it, Arduino IDE will not see the Turtle COM port. |
+
+## Offline kit contents
 
 | Path | What it is |
 |------|------------|
-| `offline/node/` | **Node.js** runtime (includes **npm**). Only needed if the laptop has no Node yet. |
-| `offline/npm/node_modules.zip` | **Project packages** for this site — not a second npm install. See below. |
-| `offline/arduino-ide/` | **Arduino IDE 1.8.19** (Uno/AVR included) |
-| `offline/drivers/cp210x/` | USB-UART drivers (Windows + Mac) |
+| `offline/node/` | Portable **Node.js** zip (includes **npm**) — for no-admin students |
+| `offline/npm/node_modules.zip` | **Project packages** (Blockly, Vite, …) — not a second npm install |
+| `offline/arduino-ide/` | Arduino IDE 1.8.19 |
+| `offline/drivers/cp210x/` | USB-UART drivers (admin usually required) |
 
-### Why `offline/npm/`? (packages, not the npm tool)
+### Why `offline/npm/`?
 
-A normal Node install already comes with **npm**. You do **not** install npm separately.
+Node already includes the **npm** tool. This zip is only the libraries this project needs (`npm install` offline). Versions from `package.json`:
 
-`offline/npm/` is only a pre-downloaded copy of this project’s dependencies (what `npm install` would fetch from the internet). In class there is no network, so we ship them as `node_modules.zip` and extract them once.
-
-From `package.json` (ranges resolved when the zip was built):
-
-| Package | Role | Version range |
-|---------|------|----------------|
-| **blockly** | Block coding UI | `^12.3.1` |
-| **express** | Local compile API server | `^5.2.1` |
-| **webserial-flasher** | Browser USB upload helper (optional path) | `^1.0.1` |
-| **vite** | Dev server / build | `^7.1.7` |
-| **@types/express** | Type hints for Express | `^5.0.6` |
-
-Exact locked versions are in `package-lock.json` (also under `offline/npm/`).
-
-**Windows (once):**
-
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts\offline-setup.ps1
-```
-
-Then install Arduino IDE + CP210x from `offline/`.
-
-**Mac (once):** `bash scripts/offline-setup.sh`, then install IDE + driver from `offline/`.
-
-Details: [offline/README.md](offline/README.md) · [install/index.html](install/index.html)
+| Package | Version range | Role |
+|---------|---------------|------|
+| blockly | `^12.3.1` | Blocks UI |
+| express | `^5.2.1` | Local server |
+| webserial-flasher | `^1.0.1` | Optional browser flash |
+| vite | `^7.1.7` | Dev server |
+| @types/express | `^5.0.6` | Types |
 
 ## Every class session
 
-```bash
-npm run dev
+```text
+scripts\start-dev.cmd
 ```
 
-Open **http://localhost:5173/** → **Code** → **Download .ino** → open in **Arduino IDE** → Board **Uno**, port **CP210x**, unplug Bluetooth → **Upload**.
+Open **http://localhost:5173/** → **Code** → **Download .ino** → Arduino IDE → Board **Uno**, Port **CP210x** → unplug Bluetooth → **Upload**.
 
 ## Scripts
 
-| Command | Purpose |
-|---------|---------|
-| `scripts/offline-setup.ps1` / `.sh` | Extract `node_modules` (and portable Node on Windows) |
-| `npm run dev` | Local coding site |
-| `npm run build` | Static build |
+| File | Purpose |
+|------|---------|
+| `scripts/offline-setup.ps1` | Once: extract portable Node + `node_modules` (no admin) |
+| `scripts/start-dev.cmd` | Every session: start the site with portable Node |
+| `scripts/offline-setup.sh` | Mac equivalent extract |
+
+More detail: [offline/README.md](offline/README.md) · [install/index.html](install/index.html)
 
 ## Related
 

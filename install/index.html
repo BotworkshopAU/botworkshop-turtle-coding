@@ -80,13 +80,33 @@
           </tr>
         </table>
 
-        <h3>Windows — once per laptop</h3>
-        <pre>powershell -ExecutionPolicy Bypass -File scripts\offline-setup.ps1</pre>
+        <h3>Windows — student account (no admin)</h3>
+        <div class="note">
+          Do <strong>not</strong> run the Node Windows installer — it needs admin and often shows
+          “unauthorized”. Use portable Node from this kit instead.
+        </div>
         <ol>
-          <li>Run the script above (extracts <code>node_modules</code>).</li>
-          <li>Install <code>offline\arduino-ide\arduino-1.8.19-windows.exe</code>.</li>
-          <li>Unzip and install <code>offline\drivers\cp210x\CP210x_Universal_Windows_Driver.zip</code>.</li>
-          <li>Device Manager → Ports → should show <strong>Silicon Labs CP210x (COMx)</strong>.</li>
+          <li>
+            Once, in the project folder:
+            <pre>powershell -ExecutionPolicy Bypass -File scripts\offline-setup.ps1</pre>
+            This extracts:
+            <ul>
+              <li>portable Node → <code>tools\node\node-…-win-x64\</code> (includes npm)</li>
+              <li>project packages → <code>node_modules\</code> next to <code>package.json</code></li>
+            </ul>
+          </li>
+          <li>
+            Every class: double‑click <code>scripts\start-dev.cmd</code> (uses that portable npm —
+            no system install).
+          </li>
+          <li>
+            Arduino IDE without admin: unzip
+            <code>offline\arduino-ide\arduino-1.8.19-windows.zip</code> into Documents.
+          </li>
+          <li>
+            CP210x driver usually needs a <strong>teacher/admin once</strong> from
+            <code>offline\drivers\cp210x\</code>.
+          </li>
         </ol>
 
         <h3>Mac — once per laptop</h3>
