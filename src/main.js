@@ -172,30 +172,59 @@ function applyFacePadLabels(t) {
 }
 
 let uploadReady = false;
+/** @type {"ok"|"not-local"|"no-serial"|"no-api"|"no-cli"|""} */
+let uploadBlockReason = "";
 
 function syncUploadButton() {
   if (!uploadBtn) return;
-  uploadBtn.hidden = !uploadReady;
-  uploadBtn.disabled = !uploadReady;
+  // Always show Upload to Turtle in this repo — never hide the button.
+  uploadBtn.hidden = false;
+  uploadBtn.disabled = false;
+  uploadBtn.textContent = ui(lang).uploadTurtle;
   uploadBtn.classList.toggle("primary", uploadReady);
-  if (uploadReady) {
-    uploadBtn.textContent = ui(lang).uploadTurtle;
-    downloadBtn.classList.remove("primary");
-  } else {
-    downloadBtn.classList.add("primary");
-  }
+  if (uploadReady) downloadBtn.classList.remove("primary");
+  else downloadBtn.classList.add("primary");
 }
 
 async function refreshUploadAvailability() {
   if (!uploadBtn) return;
-  if (!isLocalCodingHost() || !webSerialSupported()) {
+  if (!isLocalCodingHost()) {
     uploadReady = false;
+    uploadBlockReason = "not-local";
+    syncUploadButton();
+    return;
+  }
+  if (!webSerialSupported()) {
+    uploadReady = false;
+    uploadBlockReason = "no-serial";
     syncUploadButton();
     return;
   }
   const health = await compileApiAvailable();
-  uploadReady = Boolean(health.ok && health.cli);
+  if (!health.ok) {
+    uploadReady = false;
+    uploadBlockReason = health.reason === "not-local" ? "not-local" : "no-api";
+    syncUploadButton();
+    return;
+  }
+  if (!health.cli) {
+    uploadReady = false;
+    uploadBlockReason = "no-cli";
+    syncUploadButton();
+    return;
+  }
+  uploadReady = true;
+  uploadBlockReason = "ok";
   syncUploadButton();
+}
+
+function explainUploadBlocked() {
+  const t = ui(lang);
+  if (uploadBlockReason === "not-local") showFailBar(t.statusUploadNotLocal);
+  else if (uploadBlockReason === "no-serial") showFailBar(t.statusUploadNoSerial);
+  else if (uploadBlockReason === "no-api") showFailBar(t.statusUploadNoApi);
+  else if (uploadBlockReason === "no-cli") showFailBar(t.statusUploadNoCli);
+  else showFailBar(t.statusUploadNoApi);
 }
 
 function applyChrome() {
@@ -215,9 +244,9 @@ function applyChrome() {
   newBtn.textContent = t.newBtn;
   copyBtn.textContent = t.copyCode;
   downloadBtn.textContent = t.downloadArduino;
-  downloadBtn.classList.add("primary");
   if (uploadBtn) {
-    uploadBtn.hidden = true;
+    uploadBtn.hidden = false;
+    uploadBtn.disabled = false;
     uploadBtn.textContent = t.uploadTurtle;
   }
   if (setupHeader) setupHeader.textContent = t.setup;
@@ -337,9 +366,12 @@ downloadBtn.addEventListener("click", () => {
 let uploading = false;
 uploadBtn?.addEventListener("click", async () => {
   if (uploading) return;
-  await refreshUploadAvailability();
-  if (!uploadReady) return;
   const t = ui(lang);
+  await refreshUploadAvailability();
+  if (!uploadReady) {
+    explainUploadBlocked();
+    return;
+  }
   uploading = true;
   uploadBtn.disabled = true;
   hideStatusBar();
@@ -376,6 +408,7 @@ uploadBtn?.addEventListener("click", async () => {
     }
   } finally {
     uploading = false;
+    uploadBtn.disabled = false;
     await refreshUploadAvailability();
   }
 });

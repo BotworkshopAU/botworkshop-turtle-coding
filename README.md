@@ -98,7 +98,10 @@ Node already includes the **npm** tool. This zip is only the libraries this proj
 scripts\start-dev.cmd
 ```
 
-Open **http://localhost:5173/** → **Code** → **Download .ino** → Arduino IDE → Board **Uno**, Port **CP210x** → unplug Bluetooth → **Upload**.
+Open **http://localhost:5173/** → **Code** → **Upload to Turtle** (always shown) → pick CP210x.  
+Backup: **Download .ino** → Arduino IDE → Uno + CP210x. Unplug Bluetooth first.
+
+**Upload to Turtle** is never hidden in this repo. If flash is not ready (no Arduino CLI / server), clicking it shows an error instead of removing the button.
 
 ## Scripts
 

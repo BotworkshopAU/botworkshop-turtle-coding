@@ -51,9 +51,9 @@ const en = {
   statusUploadBusy: "Upload already running…",
   statusUploadNoSerial: "Use Chrome or Edge on a laptop (Web Serial).",
   statusUploadNoApi:
-    "Upload needs this PC: npm run setup:cli once, then npm run dev, open http://localhost:5173/code.html",
+    "Compile server not running — use scripts\\start-dev.cmd (or npm run dev), then open http://localhost:5173/code.html",
   statusUploadNotLocal:
-    "Upload only works on this PC via localhost (npm run dev). The public site cannot flash the Turtle.",
+    "Upload only works on this PC via localhost (scripts\\start-dev.cmd). Open http://localhost:5173/code.html",
   uploadHelpAria: "How to enable Upload",
   uploadHelpTitle: "Enable Upload to Turtle",
   uploadHelpClose: "Close",
@@ -66,7 +66,8 @@ const en = {
     "<p>Arduino CLI is missing on this PC.</p><ol><li>In the project folder run:<br><code>npm run setup:cli</code></li><li>Restart the site:<br><code>npm run dev</code></li><li>Open<br><code>http://localhost:5173/code.html</code></li></ol>",
   uploadHelpNoSerial:
     "<p>Upload needs <strong>Chrome</strong> or <strong>Edge</strong> on a laptop.</p><ol><li>Do not use a phone or Safari-only setup.</li><li>Open Coding on this computer, then try again.</li></ol>",
-  statusUploadNoCli: "Arduino CLI missing on this PC — run npm run setup:cli once.",
+  statusUploadNoCli:
+    "Arduino CLI missing — run npm run setup:cli once, then restart start-dev.cmd. Or use Download .ino + Arduino IDE.",
   statusUploadCancelled: "Upload cancelled.",
   statusUploadFail: "Upload failed.",
   statusDemoFail: "Could not load that demo.",
@@ -97,12 +98,13 @@ const en = {
     <li>Use <strong>Chrome</strong> or Edge on a laptop (not a phone).</li>
     <li>
       Once per laptop: follow the <a href="install/index.html">Install guide</a>
-      (extract <code>offline/npm</code>, install Arduino IDE 1.8.19 + CP210x driver).
+      (portable Node + project packages; Arduino CLI for browser Upload, or Arduino IDE as backup).
     </li>
     <li>Plug in USB. <strong>Unplug Bluetooth</strong> on the robot.</li>
     <li>
-      Run <code>npm run dev</code> → open Coding → <strong>Download .ino</strong>
-      → open in Arduino IDE (Board: Uno, Port: CP210x) → Upload.
+      Run <code>scripts\\start-dev.cmd</code> → open Coding →
+      <strong>Upload to Turtle</strong> and pick the CP210x port.
+      Backup: <strong>Download .ino</strong> and upload with Arduino IDE.
     </li>
   `,
   telloStepsHtml: `
@@ -280,9 +282,9 @@ const ar = {
   statusUploadBusy: "الرفع قيد التنفيذ…",
   statusUploadNoSerial: "استخدم Chrome أو Edge على حاسوب (Web Serial).",
   statusUploadNoApi:
-    "الرفع يحتاج هذا الحاسوب: npm run setup:cli مرة، ثم npm run dev، وافتح http://localhost:5173/code.html",
+    "خادم الترجمة غير شغّال — استخدم scripts\\start-dev.cmd (أو npm run dev) ثم افتح http://localhost:5173/code.html",
   statusUploadNotLocal:
-    "الرفع يعمل فقط على هذا الحاسوب عبر localhost (npm run dev). الموقع العام لا يبرمج السلحفاة.",
+    "الرفع يعمل فقط عبر localhost (scripts\\start-dev.cmd). افتح http://localhost:5173/code.html",
   uploadHelpAria: "كيف تفعّل الرفع",
   uploadHelpTitle: "تفعيل رفع إلى السلحفاة",
   uploadHelpClose: "إغلاق",
@@ -295,7 +297,8 @@ const ar = {
     "<p>Arduino CLI غير موجود على هذا الحاسوب.</p><ol><li>في مجلد المشروع نفّذ:<br><code>npm run setup:cli</code></li><li>أعد تشغيل الموقع:<br><code>npm run dev</code></li><li>افتح<br><code>http://localhost:5173/code.html</code></li></ol>",
   uploadHelpNoSerial:
     "<p>الرفع يحتاج <strong>Chrome</strong> أو <strong>Edge</strong> على حاسوب محمول.</p><ol><li>لا تستخدم هاتفاً أو إعداد Safari فقط.</li><li>افتح البرمجة على هذا الحاسوب ثم أعد المحاولة.</li></ol>",
-  statusUploadNoCli: "Arduino CLI غير موجود على هذا الحاسوب — نفّذ npm run setup:cli مرة واحدة.",
+  statusUploadNoCli:
+    "Arduino CLI غير موجود — نفّذ npm run setup:cli مرة ثم أعد start-dev.cmd. أو استخدم تنزيل .ino + Arduino IDE.",
   statusUploadCancelled: "تم إلغاء الرفع.",
   statusUploadFail: "فشل الرفع.",
   statusDemoFail: "تعذّر تحميل هذه التجربة.",
@@ -326,12 +329,13 @@ const ar = {
     <li>استخدم <strong>Chrome</strong> أو Edge على حاسوب محمول (وليس هاتف).</li>
     <li>
       مرة لكل حاسوب: اتبع <a href="install/index.html">دليل التثبيت</a>
-      (استخراج <code>offline/npm</code> وتثبيت Arduino IDE 1.8.19 وتعريف CP210x).
+      (Node محمول + حزم المشروع؛ Arduino CLI لرفع المتصفح، أو Arduino IDE كاحتياطي).
     </li>
     <li>وصّل USB. <strong>افصل البلوتوث</strong> على الروبوت.</li>
     <li>
-      نفّذ <code>npm run dev</code> → البرمجة → <strong>تنزيل .ino</strong>
-      → افتحه في Arduino IDE (اللوحة: Uno، المنفذ: CP210x) → رفع.
+      شغّل <code>scripts\\start-dev.cmd</code> → البرمجة →
+      <strong>رفع إلى السلحفاة</strong> واختر منفذ CP210x.
+      احتياطي: <strong>تنزيل .ino</strong> والرفع من Arduino IDE.
     </li>
   `,
   telloStepsHtml: `
