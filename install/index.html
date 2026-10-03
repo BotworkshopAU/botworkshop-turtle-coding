@@ -87,8 +87,9 @@
         </div>
         <ol>
           <li>
-            Once, in the project folder:
-            <pre>powershell -ExecutionPolicy Bypass -File scripts\offline-setup.ps1</pre>
+            Once — if PowerShell says scripts are disabled, use
+            <code>scripts\offline-setup.cmd</code> instead (or Extract All in File Explorer).
+            <pre>scripts\offline-setup.cmd</pre>
             This extracts:
             <ul>
               <li>portable Node → <code>tools\node\node-…-win-x64\</code> (includes npm)</li>

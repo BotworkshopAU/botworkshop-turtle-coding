@@ -20,14 +20,34 @@ Use **portable Node** from this kit (no install, no admin):
 | Step | What to do |
 |------|------------|
 | 1 | Copy the whole `botworkshop-turtle-coding` folder onto the laptop (or USB). |
-| 2 | Once: run `powershell -ExecutionPolicy Bypass -File scripts\offline-setup.ps1` |
+| 2 | Once: double‑click `scripts\offline-setup.cmd` *(if `.ps1` is blocked by school policy)* |
 | 3 | Every class: double‑click `scripts\start-dev.cmd` |
 | 4 | Browser: http://localhost:5173/ |
 
-That script:
+If Windows says **“scripts are disabled on this system”**, do **not** use `.ps1`. Use:
 
-1. Extracts **portable Node** → `tools\node\node-…-win-x64\` (includes `node.exe` + `npm.cmd`)  
-2. Extracts **project packages** → `node_modules\` **in the project root** (same folder as `package.json`)
+```text
+scripts\offline-setup.cmd
+```
+
+Or extract with **File Explorer** (no scripts at all):
+
+1. Right‑click `offline\npm\node_modules.zip` → **Extract All** → choose the **project root** (folder that contains `package.json`) so you get `node_modules\` there.  
+2. Right‑click `offline\node\node-*-win-x64.zip` → **Extract All** → extract into `tools\node\`.  
+3. Double‑click `scripts\start-dev.cmd`.
+
+Optional PowerShell (only if allowed):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\offline-setup.ps1
+```
+
+On locked school PCs, **Bypass often still fails** — prefer `.cmd` or Extract All.
+
+What the setup creates:
+
+1. **Portable Node** → `tools\node\node-…-win-x64\` (includes `node.exe` + `npm.cmd`)  
+2. **Project packages** → `node_modules\` **in the project root** (same folder as `package.json`)
 
 ```
 botworkshop-turtle-coding/
@@ -84,7 +104,8 @@ Open **http://localhost:5173/** → **Code** → **Download .ino** → Arduino I
 
 | File | Purpose |
 |------|---------|
-| `scripts/offline-setup.ps1` | Once: extract portable Node + `node_modules` (no admin) |
+| `scripts/offline-setup.cmd` | **Preferred on school PCs** — extract portable Node + `node_modules` (no PowerShell) |
+| `scripts/offline-setup.ps1` | Same, if PowerShell scripts are allowed |
 | `scripts/start-dev.cmd` | Every session: start the site with portable Node |
 | `scripts/offline-setup.sh` | Mac equivalent extract |
 

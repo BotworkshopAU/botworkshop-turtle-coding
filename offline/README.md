@@ -25,16 +25,11 @@ Not a second npm. Node already has npm. This zip is Blockly / Vite / Express / e
 
 ## Windows — no admin (students)
 
-1. Once, in the project folder:
+1. Once, in the project folder — **prefer CMD** (school PCs often block `.ps1`):
 
-   ```powershell
-   powershell -ExecutionPolicy Bypass -File scripts\offline-setup.ps1
-   ```
+   Double‑click `scripts\offline-setup.cmd`
 
-   Creates:
-
-   - `tools\node\node-…-win-x64\` — portable Node + npm  
-   - `node_modules\` — next to `package.json`
+   Or File Explorer: Extract All on the two zips (see README).
 
 2. Arduino IDE: unzip `arduino-ide\arduino-1.8.19-windows.zip` into Documents (portable).
 
